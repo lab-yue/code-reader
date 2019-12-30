@@ -2,14 +2,15 @@ import fetch from "isomorphic-unfetch";
 import Prism from "prismjs";
 import { useRouter } from "next/router";
 import "prismjs/components/prism-markdown";
-import { resetOps } from "../hub/vue-next/packages/runtime-test/src";
+import Tree from "../components/Tree";
 //loadLanguages(["tsx"]);
 
 export default function Index({ file, tree }) {
-  const { f, repo } = useRouter().query;
-  const filepath = Array.isArray(f) ? f.join() : f;
+  const { f, repo: r } = useRouter().query;
+  const j = (s: string | string[]) => (Array.isArray(s) ? s.join() : s);
+  const filepath = j(f);
+  const repo = j(r);
   const [ext] = filepath.split(".").reverse();
-  const [name] = filepath.split("/").reverse();
 
   let html = "";
   if (ext in Prism.languages) {
@@ -92,15 +93,11 @@ export default function Index({ file, tree }) {
           color: skyblue;
         }`}
       </style>
-      <h1>{name}</h1>
+      <h1>{filepath}</h1>
       <div className="flex">
-        <ul className="nav">
-          {tree.map(f => (
-            <li key={f}>
-              <a href={`/code?repo=${repo}&f=${f}`}>{f}</a>
-            </li>
-          ))}
-        </ul>
+        <div className="nav">
+          <Tree repo={repo} tree={tree} />
+        </div>
         <pre>
           <code dangerouslySetInnerHTML={{ __html: html }} />
         </pre>

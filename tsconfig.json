@@ -21,6 +21,9 @@
       "./node_modules/@types"
     ]
   },
+  "exclude": [
+    "hub"
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
