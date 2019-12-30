@@ -13,8 +13,9 @@ export default function Index({ tree }) {
   );
 }
 
-Index.getInitialProps = async () => {
-  const res = await fetch("http://localhost:3000/api/tree");
+Index.getInitialProps = async ctx => {
+  const { repo } = ctx.query;
+  const res = await fetch(`http://localhost:3000/api/tree?repo=${repo}`);
   const { tree } = await res.json();
   return { tree };
 };
