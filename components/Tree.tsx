@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import Link from "next/link";
 type TreeProps = {
   repo: string;
   tree: string[];
@@ -30,7 +30,7 @@ export default function Tree({ repo, tree }: TreeProps) {
       <ul>
         {navTree.map(f => (
           <li key={f.path}>
-            <a href={`/code?repo=${repo}&f=${f.path}`}>{f.short}</a>
+            <Link href={`/code?repo=${repo}&f=${f.path}`}>{f.short}</Link>
           </li>
         ))}
       </ul>

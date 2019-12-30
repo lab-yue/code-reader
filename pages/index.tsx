@@ -1,11 +1,11 @@
 import fetch from "isomorphic-unfetch";
-
+import Link from "next/link";
 export default function Index({ repos }) {
   return (
     <ul>
       {repos.map(repo => (
         <li key={repo}>
-          <a href={`/tree/${repo}`}>{repo}</a>
+          <Link href={`/tree/${repo}`}>{repo}</Link>
         </li>
       ))}
     </ul>

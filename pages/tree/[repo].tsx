@@ -10,7 +10,7 @@ export default function Repo({ tree }) {
     <ul>
       {tree.map(f => (
         <li key={f}>
-          <a href={`/code?repo=${repo}&f=${f}`}>{f}</a>
+          <Link href={`/code?repo=${repo}&f=${f}`}>{f}</Link>
         </li>
       ))}
     </ul>
