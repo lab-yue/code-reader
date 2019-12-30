@@ -26,8 +26,27 @@ export default function Tree({ repo, tree }: TreeProps) {
   }, [txt]);
   return (
     <>
-      <input onChange={e => setTxt(e.target.value)} />
-      <ul>
+      <style>{`
+        .input{
+          postion: absolute;
+          top:0;
+          left:0;
+        }
+        .tree{
+          margin-top: 1rem;
+          max-height: 90vh;
+          overflow: scroll;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          position: sticky;
+          top:0;
+        }
+        .tree::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+      <input className="input" onChange={e => setTxt(e.target.value)} />
+      <ul className="tree">
         {navTree.map(f => (
           <li key={f.path}>
             <Link href={`/code?repo=${repo}&f=${f.path}`}>{f.short}</Link>

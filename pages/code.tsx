@@ -29,14 +29,8 @@ export default function Index({ file, tree }) {
         .nav{
           max-width: 20vw;
           max-height: 100vh;
-          overflow: scroll;
-          scrollbar-width: none;
-          -ms-overflow-style: none;
           position: sticky;
           top:0;
-        }
-        .nav::-webkit-scrollbar {
-          display: none;
         }
         pre {
           flex:1;
