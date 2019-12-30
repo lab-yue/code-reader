@@ -4,7 +4,7 @@ export default function Index({ repos }) {
   return (
     <ul>
       {repos.map(repo => (
-        <li>
+        <li key={repo}>
           <a href={`/tree/${repo}`}>{repo}</a>
         </li>
       ))}
